@@ -4,7 +4,6 @@ use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// TODO: не приходит запрос
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/token', [AuthController::class, 'token']);
 Route::post('/test', function(){
