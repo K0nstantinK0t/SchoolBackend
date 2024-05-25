@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/token', [AuthController::class, 'token']);
-Route::post('/test', function(){
-return ['alright'];
-});
+
+Route::apiResources([
+    'students' => \App\Http\Controllers\StudentController::class,
+    'teachers' => \App\Http\Controllers\TeacherController::class,
+    'schoolclasses' => \App\Http\Controllers\SchoolClassController::class,
+]);
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user', function (Request $request) {

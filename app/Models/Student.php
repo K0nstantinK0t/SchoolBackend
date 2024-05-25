@@ -9,6 +9,13 @@ use App\Models\SchoolClass;
 class Student extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'surname',
+        'birthday',
+        'school_class_id',
+    ];
     public function SchoolClass()
     {
         return $this->hasOne(SchoolClass::class);

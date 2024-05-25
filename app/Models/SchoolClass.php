@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SchoolClass extends Model
 {
     use HasFactory;
+    protected $fillable = ['teacher_id'];
     public function students()
     {
-        return $this->hasMany();
+        return $this->hasMany(Student::class);
     }
     public function teacher(){
         return $this->hasOne(Teacher::class);
