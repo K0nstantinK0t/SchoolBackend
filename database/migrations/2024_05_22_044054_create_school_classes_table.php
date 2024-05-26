@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('school_classes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
             $table->foreignIdFor(\App\Models\Teacher::class)->constrained();
         });
     }

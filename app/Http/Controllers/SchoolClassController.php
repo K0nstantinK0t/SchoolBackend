@@ -14,7 +14,8 @@ class SchoolClassController extends Controller
      */
     public function index()
     {
-        //
+        $SchoolClasses = SchoolClass::all();
+        return response()->json($SchoolClasses, 200);
     }
 
     /**
@@ -24,6 +25,7 @@ class SchoolClassController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'teacher_id' => ['required', 'numeric', 'max:255', 'exists:teachers,id'],
+            'name' => ['required', 'max:255', 'unique:school_classes'],
         ]);
 
         if ($validator->fails()) {
