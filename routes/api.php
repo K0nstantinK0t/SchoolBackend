@@ -13,6 +13,7 @@ Route::apiResources([
     'schoolclasses' => \App\Http\Controllers\SchoolClassController::class,
 ]);
 
+Route::get('/schoolclasses/{id}/withStudentsAndTeachers', [\App\Http\Controllers\SchoolClassController::class, 'getWithStudentsAndTeachers']);
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user', function (Request $request) {
         return $request->user();

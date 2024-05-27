@@ -18,6 +18,6 @@ class Student extends Model
     ];
     public function SchoolClass()
     {
-        return $this->hasOne(SchoolClass::class);
+        return $this->belongsTo(SchoolClass::class);
     }
 }

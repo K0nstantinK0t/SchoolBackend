@@ -63,4 +63,8 @@ class SchoolClassController extends Controller
     {
         //
     }
+    public function getWithStudentsAndTeachers($id, Request $request){
+        $data = SchoolClass::findOrFail($id)->with('students', 'teacher')->get()->first();
+        return response()->json($data, 200);
+    }
 }

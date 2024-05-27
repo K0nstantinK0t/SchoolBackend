@@ -9,7 +9,7 @@ class Teacher extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
-    public function Classes(){
+    public function SchoolClasses(){
         return $this->hasMany(SchoolClass::class);
     }
 }
