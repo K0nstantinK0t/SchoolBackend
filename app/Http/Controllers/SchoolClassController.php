@@ -55,6 +55,22 @@ class SchoolClassController extends Controller
     {
         //
     }
+    public function setTeacher(Request $request, string $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'teacher_id' => ['required', 'numeric', 'max:255', 'exists:teachers,id']
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 401);
+        }
+
+        $input = $request->all();
+        $schoolClass = SchoolClass::where('id', $id)->get()->first();
+        $schoolClass->teacher_id=$input->teacher_id;
+        $schoolClass->save();
+        return response()->json(['school_class'=>$schoolClass], 200);
+    }
 
     /**
      * Remove the specified resource from storage.

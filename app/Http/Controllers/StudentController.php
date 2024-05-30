@@ -62,6 +62,8 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student = Student::findOrFail($id)->get()->first();
+        $student->delete();
+        return response()->json(['message' => 'Student removed successfull'], 200);
     }
 }
