@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SchoolClass;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -66,4 +67,11 @@ class StudentController extends Controller
         $student->delete();
         return response()->json(['message' => 'Student removed successfull'], 200);
     }
+    public function youngest()
+    {
+        $classes = SchoolClass::where('name', 'like', '1_')->get();
+        $youngestStudent = Student::whereBelongsTo($classes)->orderBy('birthday', 'asc')->get()->first();
+        return response()->json([$youngestStudent], 200);
+    }
 }
+

@@ -14,6 +14,7 @@ Route::apiResources([
 Route::post('students/{id}/remove', [\App\Http\Controllers\StudentController::class, 'destroy']);
 Route::post('students', [\App\Http\Controllers\StudentController::class, 'store']);
 Route::get('students', [\App\Http\Controllers\StudentController::class, 'index']);
+Route::get('students/youngest', [\App\Http\Controllers\StudentController::class, 'youngest']);
 Route::get('/schoolclasses/{id}/withStudentsAndTeachers', [\App\Http\Controllers\SchoolClassController::class, 'getWithStudentsAndTeachers']);
 Route::post('/schoolclasses/{id}/setTeacher', [\App\Http\Controllers\SchoolClassController::class, 'setTeacher']);
 //Route::middleware('auth:sanctum')->group(function() {
